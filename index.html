@@ -3,7 +3,7 @@
   <div class="form-group">    <label>1. Enter Email</label>    <input type="email" id="email" placeholder="buyer@example.com" required>  </div>
   <div class="form-group">    <label>2. Enter Your Polygon Receive Address</label>    <input type="text" id="polygonAddress" placeholder="0x..." required>  </div>
   <div class="form-group">    <label>3. Select Payment Crypto on Polygon</label>    <select id="cryptoSelect">      <option value="USDC">USDC (Polygon)</option>      <option value="USDT">USDT (Polygon)</option>      <option value="MATIC">MATIC (Polygon)</option>    </select>  </div>
-  <div class="form-group">    <label>Purchase Amount (PZZC = 1:1 USDC Value)</label>    <input type="number" id="pzzcAmount" value="20" min="20" step="20">  </div>
+  <div class="form-group">    <label>Purchase Amount (PZZC = 1:1 USDC Value)</label>    <input type="number" id="pzzcAmount" value="0.001" min="0.001" step="0.001">  </div>
   <button id="payButton">Complete Purchase</button>  <div id="status">Ready to Connect</div>
   <div class="footer-text">    Return and purchase as much as you like as often as you like!<br>    <strong>Thank you, Pizza Coin 💵🍕😃</strong>  </div></div>
 <script type="module">import { ethers } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.min.js";
