@@ -8,23 +8,29 @@
   <div class="footer-text">    Return and purchase as much as you like as often as you like!<br>    <strong>Thank you, Pizza Coin 💵🍕😃</strong>  </div></div>
 <script type="module">import { ethers } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.min.js";
 const USDC_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; 
-🟢const MERCHANT_WALLET = "0x9e63CDc3D66714f0FCe5B3347139E117a04A75b3";🟢
+const MERCHANT_WALLET = "0x9e63CDc3D66714f0FCe5B3347139E117a04A75b3";
 const ERC20_ABI = ["function transfer(address to, uint256 value) public returns (bool)"];
 document.getElementById("payButton").onclick = async () => {  const email = document.getElementById("email").value;  const polyAddr = document.getElementById("polygonAddress").value;  const amount = document.getElementById("pzzcAmount").value;  const statusDiv = document.getElementById("status");
+
   if (!email || !polyAddr) {    alert("Please fill in both your email and Polygon address fields.");    return;  }
+
   if (typeof window.ethereum === "undefined") {    statusDiv.innerHTML = "No Web3 Wallet Detected.";    return;  }
+
   try {    statusDiv.innerHTML = "Requesting wallet connection...";    const provider = new ethers.BrowserProvider(window.ethereum);    const signer = await provider.getSigner();
+
     const network = await provider.getNetwork();    if (network.chainId !== 137n) {      try {        await window.ethereum.request({          method: 'wallet_switchEthereumChain',          params: [{ chainId: '0x89' }],        });      } catch (switchError) {        statusDiv.innerHTML = "Please switch your wallet network to Polygon.";        return;      }    }
+
     statusDiv.innerHTML = "Initiating payment transaction...";    const usdcContract = new ethers.Contract(USDC_ADDRESS, ERC20_ABI, signer);    const parsedAmount = ethers.parseUnits(amount, 6);
 
     const tx = await usdcContract.transfer(MERCHANT_WALLET, parsedAmount);    statusDiv.innerHTML = `Transaction broadcasted! Waiting for confirmation...<br><small>${tx.hash}</small>`;        const receipt = await tx.wait();
+
     if (receipt.status === 1) {      statusDiv.innerHTML = `        <span class="success">✅ Success!</span> PZZC has been deposited to your polygon wallet ${polyAddr.substring(0,6)}...<br>        <span class="success">🍕 Success!</span> Confirmation emails and your pizza gift card have been dispatched.<br>        <small>Transaction Hash: ${tx.hash}</small>      `;
 
-      🟢await fetch("https://pizza-backend-8if7.onrender.com/api/verify-usdc-order", {        
+      await fetch("https://pizza-backend-8if7.onrender.com/api/verify-usdc-order", {        
         method: "POST",        
         headers: { "Content-Type": "application/json" },        
         body: JSON.stringify({ email, polygonAddress: polyAddr, pzzcAmount: amount, txHash: tx.hash })      
-      }).catch(err => console.log("Backend notification sync completed."));🟢
-    }
-  } catch (err) {    console.log(err);    statusDiv.innerHTML = "Transaction cancelled or failed.";  }};;</script>
+      }).catch(err => console.log("Backend notification sync completed."));    }
+  } catch (err) {    console.log(err);    statusDiv.innerHTML = "Transaction cancelled or failed.";  }};
+</script>
 </body></html>
