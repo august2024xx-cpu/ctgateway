@@ -1,144 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pizza Coin</title>
-<style>
-body{margin:0;padding:20px;background:#000;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:Arial,sans-serif;color:white;}
-.container{width:95%;max-width:550px;background:#111;padding:30px;border-radius:20px;border:1px solid #333;}
-h1{font-size:28px;text-align:center;margin-bottom:10px;color:#ff9800;}
-.instructions{background:#222;padding:15px;border-radius:10px;margin-bottom:20px;font-size:14px;line-height:1.6;color:#ddd;border-left:4px solid #ff9800;}
-.instructions ol{margin:0;padding-left:20px;}
-.instructions li{margin-bottom:8px;}
-.form-group{margin-bottom:15px;}
-label{display:block;font-size:14px;margin-bottom:5px;color:#aaa;font-weight:bold;}
-input, select{width:100%;padding:15px;font-size:16px;background:#222;border:1px solid #444;color:white;border-radius:10px;box-sizing:border-box;}
-button{width:100%;padding:20px;font-size:20px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;background:#ff9800;color:white;margin-top:10px;}
-button:hover{opacity:.9;}
-#status{margin-top:20px;font-size:15px;text-align:center;word-break:break-all;line-height:1.5;}
-.success{color:#00ff00;font-weight:bold;}
-.footer-text{text-align:center;margin-top:20px;font-size:14px;color:#bbb;font-style:italic;}
-</style>
-</head>
-<body>
-
-<div class="container">
-  <h1>🍕 PIZZA COIN 🍕</h1>
-  
-  <div class="instructions">
-    <strong>How it works:</strong>
-    <ol>
-      <li><strong>Enter your email:</strong> This is where you will receive your electronic pizza gift card equal to 50% of your purchase amount in multiples of 20.</li>
-      <li><strong>Enter your Polygon receive address:</strong> This is where you will receive your Pizza Coin symbol PZZC (at a 1:1 rate of PZZC to USDC).</li>
-      <li><strong>Enter your payment crypto:</strong> Any Polygon crypto selected will be processed securely.</li>
-      <li><strong>Completion & Delivery:</strong> Once finished, you will receive a success email confirming your PZZC deposit and your immediate-use pizza gift card code!</li>
-    </ol>
-  </div>
-
-  <div class="form-group">
-    <label>1. Enter Email</label>
-    <input type="email" id="email" placeholder="buyer@example.com" required>
-  </div>
-
-  <div class="form-group">
-    <label>2. Enter Your Polygon Receive Address</label>
-    <input type="text" id="polygonAddress" placeholder="0x..." required>
-  </div>
-
-  <div class="form-group">
-    <label>3. Select Payment Crypto on Polygon</label>
-    <select id="cryptoSelect">
-      <option value="USDC">USDC (Polygon)</option>
-      <option value="USDT">USDT (Polygon)</option>
-      <option value="MATIC">MATIC (Polygon)</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>Purchase Amount (PZZC = 1:1 USDC Value)</label>
-    <input type="number" id="pzzcAmount" value="20" min="20" step="20">
-  </div>
-
-  <button id="payButton">Complete Purchase</button>
-  <div id="status">Ready to Connect</div>
-
-  <div class="footer-text">
-    Return and purchase as much as you like as often as you like!<br>
-    <strong>Thank you, Pizza Coin 💵🍕😃</strong>
-  </div>
-</div>
-
-<script type="module">
-import { ethers } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.min.js";
-
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pizza Coin</title><style>body{margin:0;padding:20px;background:#000;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:Arial,sans-serif;color:white;}.container{width:95%;max-width:550px;background:#111;padding:30px;border-radius:20px;border:1px solid #333;}h1{font-size:28px;text-align:center;margin-bottom:10px;color:#ff9800;}.instructions{background:#222;padding:15px;border-radius:10px;margin-bottom:20px;font-size:14px;line-height:1.6;color:#ddd;border-left:4px solid #ff9800;}.instructions ol{margin:0;padding-left:20px;}.instructions li{margin-bottom:8px;}.form-group{margin-bottom:15px;}label{display:block;font-size:14px;margin-bottom:5px;color:#aaa;font-weight:bold;}input, select{width:100%;padding:15px;font-size:16px;background:#222;border:1px solid #444;color:white;border-radius:10px;box-sizing:border-box;}button{width:100%;padding:20px;font-size:20px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;background:#ff9800;color:white;margin-top:10px;}button:hover{opacity:.9;}#status{margin-top:20px;font-size:15px;text-align:center;word-break:break-all;line-height:1.5;}.success{color:#00ff00;font-weight:bold;}.footer-text{text-align:center;margin-top:20px;font-size:14px;color:#bbb;font-style:italic;}</style></head><body>
+<div class="container">  <h1>🍕 PIZZA COIN 🍕</h1>    <div class="instructions">    <strong>How it works:</strong>    <ol>      <li><strong>Enter your email:</strong> This is where you will receive your electronic pizza gift card equal to 50% of your purchase amount in multiples of 20.</li>      <li><strong>Enter your Polygon receive address:</strong> This is where you will receive your Pizza Coin symbol PZZC (at a 1:1 rate of PZZC to USDC).</li>      <li><strong>Enter your payment crypto:</strong> Any Polygon crypto selected will be processed securely.</li>      <li><strong>Completion & Delivery:</strong> Once finished, you will receive a success email confirming your PZZC deposit and your immediate-use pizza gift card code!</li>    </ol>  </div>
+  <div class="form-group">    <label>1. Enter Email</label>    <input type="email" id="email" placeholder="buyer@example.com" required>  </div>
+  <div class="form-group">    <label>2. Enter Your Polygon Receive Address</label>    <input type="text" id="polygonAddress" placeholder="0x..." required>  </div>
+  <div class="form-group">    <label>3. Select Payment Crypto on Polygon</label>    <select id="cryptoSelect">      <option value="USDC">USDC (Polygon)</option>      <option value="USDT">USDT (Polygon)</option>      <option value="MATIC">MATIC (Polygon)</option>    </select>  </div>
+  <div class="form-group">    <label>Purchase Amount (PZZC = 1:1 USDC Value)</label>    <input type="number" id="pzzcAmount" value="20" min="20" step="20">  </div>
+  <button id="payButton">Complete Purchase</button>  <div id="status">Ready to Connect</div>
+  <div class="footer-text">    Return and purchase as much as you like as often as you like!<br>    <strong>Thank you, Pizza Coin 💵🍕😃</strong>  </div></div>
+<script type="module">import { ethers } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.min.js";
 const USDC_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; 
-const MERCHANT_WALLET = "0xYourMerchantEVMWalletAddressHere";
+🟢const MERCHANT_WALLET = "0x9e63CDc3D66714f0FCe5B3347139E117a04A75b3";🟢
 const ERC20_ABI = ["function transfer(address to, uint256 value) public returns (bool)"];
+document.getElementById("payButton").onclick = async () => {  const email = document.getElementById("email").value;  const polyAddr = document.getElementById("polygonAddress").value;  const amount = document.getElementById("pzzcAmount").value;  const statusDiv = document.getElementById("status");
+  if (!email || !polyAddr) {    alert("Please fill in both your email and Polygon address fields.");    return;  }
+  if (typeof window.ethereum === "undefined") {    statusDiv.innerHTML = "No Web3 Wallet Detected.";    return;  }
+  try {    statusDiv.innerHTML = "Requesting wallet connection...";    const provider = new ethers.BrowserProvider(window.ethereum);    const signer = await provider.getSigner();
+    const network = await provider.getNetwork();    if (network.chainId !== 137n) {      try {        await window.ethereum.request({          method: 'wallet_switchEthereumChain',          params: [{ chainId: '0x89' }],        });      } catch (switchError) {        statusDiv.innerHTML = "Please switch your wallet network to Polygon.";        return;      }    }
+    statusDiv.innerHTML = "Initiating payment transaction...";    const usdcContract = new ethers.Contract(USDC_ADDRESS, ERC20_ABI, signer);    const parsedAmount = ethers.parseUnits(amount, 6);
 
-document.getElementById("payButton").onclick = async () => {
-  const email = document.getElementById("email").value;
-  const polyAddr = document.getElementById("polygonAddress").value;
-  const amount = document.getElementById("pzzcAmount").value;
-  const statusDiv = document.getElementById("status");
+    const tx = await usdcContract.transfer(MERCHANT_WALLET, parsedAmount);    statusDiv.innerHTML = `Transaction broadcasted! Waiting for confirmation...<br><small>${tx.hash}</small>`;        const receipt = await tx.wait();
+    if (receipt.status === 1) {      statusDiv.innerHTML = `        <span class="success">✅ Success!</span> PZZC has been deposited to your polygon wallet ${polyAddr.substring(0,6)}...<br>        <span class="success">🍕 Success!</span> Confirmation emails and your pizza gift card have been dispatched.<br>        <small>Transaction Hash: ${tx.hash}</small>      `;
 
-  if (!email || !polyAddr) {
-    alert("Please fill in both your email and Polygon address fields.");
-    return;
-  }
-
-  if (typeof window.ethereum === "undefined") {
-    statusDiv.innerHTML = "No Web3 Wallet Detected.";
-    return;
-  }
-
-  try {
-    statusDiv.innerHTML = "Requesting wallet connection...";
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
-
-    const network = await provider.getNetwork();
-    if (network.chainId !== 137n) {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x89' }],
-        });
-      } catch (switchError) {
-        statusDiv.innerHTML = "Please switch your wallet network to Polygon.";
-        return;
-      }
+      🟢await fetch("https://pizza-backend-8if7.onrender.com/api/verify-usdc-order", {        
+        method: "POST",        
+        headers: { "Content-Type": "application/json" },        
+        body: JSON.stringify({ email, polygonAddress: polyAddr, pzzcAmount: amount, txHash: tx.hash })      
+      }).catch(err => console.log("Backend notification sync completed."));🟢
     }
-
-    statusDiv.innerHTML = "Initiating payment transaction...";
-    const usdcContract = new ethers.Contract(USDC_ADDRESS, ERC20_ABI, signer);
-    const parsedAmount = ethers.parseUnits(amount, 6);
-
-    const tx = await usdcContract.transfer(MERCHANT_WALLET, parsedAmount);
-    statusDiv.innerHTML = `Transaction broadcasted! Waiting for confirmation...<br><small>${tx.hash}</small>`;
-    
-    const receipt = await tx.wait();
-
-    if (receipt.status === 1) {
-      statusDiv.innerHTML = `
-        <span class="success">✅ Success!</span> 20 PZZC has been deposited to your polygon wallet ${polyAddr.substring(0,6)}...<br>
-        <span class="success">🍕 Success!</span> You received a $10 pizza pizza gift card usable immediately code number <b style="color:#ff9800;">pz454-7887</b>.<br>
-        <small>Confirmation emails dispatched successfully.</small>
-      `;
-
-      await fetch("https://your-backend-url.onrender.com/api/verify-usdc-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, polygonAddress: polyAddr, pzzcAmount: amount, txHash: tx.hash })
-      }).catch(err => console.log("Backend notification sync completed."));
-    }
-
-  } catch (err) {
-    console.log(err);
-    statusDiv.innerHTML = "Transaction cancelled or failed.";
-  }
-};
-</script>
-
-</body>
-</html>
+  } catch (err) {    console.log(err);    statusDiv.innerHTML = "Transaction cancelled or failed.";  }};;</script>
+</body></html>
