@@ -19,6 +19,7 @@
   button:hover{opacity:.9;}
   #status{margin-top:20px;font-size:15px;text-align:center;word-break:break-all;line-height:1.5;}
   .success{color:#00ff00;font-weight:bold;}
+  .error{color:#ff4444;font-weight:bold;}
   .footer-text{text-align:center;margin-top:20px;font-size:14px;color:#bbb;font-style:italic;}
 </style>
 </head>
@@ -36,18 +37,18 @@
   </div>
 
   <div class="form-group">
-    <label>1. Enter Email</label>
-    <input type="email" id="email" placeholder="buyer@example.com" required>
+    <label for="email">1. Enter Email</label>
+    <input type="email" id="email" placeholder="buyer@example.com" autocomplete="email" required>
   </div>
 
   <div class="form-group">
-    <label>2. Enter Your Polygon Receive Address</label>
-    <input type="text" id="polygonAddress" placeholder="0x..." required>
+    <label for="polygonAddress">2. Enter Your Polygon Receive Address</label>
+    <input type="text" id="polygonAddress" placeholder="0x..." autocomplete="off" required>
   </div>
 
   <div class="form-group">
-    <label>3. Select Payment Crypto on Polygon</label>
-    <select id="cryptoSelect">
+    <label for="cryptoSelect">3. Select Payment Crypto on Polygon</label>
+    <select id="cryptoSelect" autocomplete="off">
       <option value="USDC">USDC (Polygon)</option>
       <option value="USDT">USDT (Polygon)</option>
       <option value="MATIC">MATIC (Polygon)</option>
@@ -55,8 +56,8 @@
   </div>
 
   <div class="form-group">
-    <label>Purchase Amount (PZZC = 1:1 USDC Value)</label>
-    <input type="number" id="pzzcAmount" value="0.001" min="0.001" step="0.001">
+    <label for="pzzcAmount">Purchase Amount (PZZC = 1:1 USDC Value)</label>
+    <input type="number" id="pzzcAmount" value="0.001" min="0.001" step="0.001" autocomplete="off">
   </div>
 
   <button id="payButton">Complete Purchase</button>
@@ -120,19 +121,37 @@ document.getElementById("payButton").onclick = async () => {
 
     if (receipt.status === 1) {
       statusDiv.innerHTML = `
-        <span class="success">✅ Success!</span> PZZC has been deposited to your polygon wallet ${polyAddr.substring(0,6)}...<br>
-        <span class="success">🍕 Success!</span> Confirmation emails and your pizza gift card have been dispatched.<br>
+        <span class="success">✅ Payment Confirmed!</span> Contacting server for PZZC distribution & emails...<br>
         <small>Transaction Hash: ${tx.hash}</small>
       `;
 
-      await fetch("https://pizza-backend-8if7.onrender.com/api/verify-usdc-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, polygonAddress: polyAddr, pzzcAmount: amount, txHash: tx.hash })
-      }).catch(err => console.log("Backend notification sync completed."));
+      try {
+        const response = await fetch("https://pizza-backend-8if7.onrender.com/api/verify-usdc-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, polygonAddress: polyAddr, pzzcAmount: amount, txHash: tx.hash })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server responded with status ${response.status}`);
+        }
+
+        statusDiv.innerHTML = `
+          <span class="success">✅ Success!</span> PZZC has been deposited to your polygon wallet ${polyAddr.substring(0,6)}...<br>
+          <span class="success">🍕 Success!</span> Confirmation emails and your pizza gift card have been dispatched.<br>
+          <small>Transaction Hash: ${tx.hash}</small>
+        `;
+      } catch (backendErr) {
+        console.error("Backend sync error:", backendErr);
+        statusDiv.innerHTML = `
+          <span class="success">✅ Payment Successful!</span><br>
+          <span class="error">⚠️ Warning:</span> Server sync failed. Check Render logs to dispatch PZZC manually.<br>
+          <small>Transaction Hash: ${tx.hash}</small>
+        `;
+      }
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     statusDiv.innerHTML = "Transaction cancelled or failed.";
   }
 };
