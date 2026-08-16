@@ -525,6 +525,12 @@
   }
 
 
+  /* =========================================================
+     ANDROID / SMALL PHONE
+     ONLY CENTER TEXT AREA NARROWED
+     SO FLOATING EMOJIS REMAIN VISIBLE
+     ========================================================= */
+
   @media (max-width: 700px) {
 
     body {
@@ -532,7 +538,8 @@
     }
 
     .container {
-      width: 100%;
+      width: 84%;
+      max-width: none;
       padding: 22px 18px 30px;
     }
 
@@ -552,7 +559,11 @@
     }
 
     .emoji-zone {
-      display: none;
+      display: block;
+      width: 8vw;
+      min-width: 45px;
+      max-width: 60px;
+      opacity: .85;
     }
   }
 </style>
@@ -595,6 +606,7 @@
   <h1>🍕 PIZZA COIN PAY WITH CRYPTO 🍕</h1>
 
   <div class="instructions">
+
     <strong>How it works:</strong>
 
     <ol>
@@ -621,6 +633,7 @@
       </li>
 
     </ol>
+
   </div>
 
 
@@ -1269,7 +1282,6 @@ purchaseForm.addEventListener(
           await fetch(
             BACKEND_URL,
             {
-
               method:
                 "POST",
 
@@ -1280,7 +1292,6 @@ purchaseForm.addEventListener(
 
               body:
                 JSON.stringify({
-
                   email:
                     email,
 
@@ -1295,9 +1306,7 @@ purchaseForm.addEventListener(
 
                   txHash:
                     tx.hash
-
                 })
-
             }
           );
 
@@ -1474,7 +1483,6 @@ purchaseForm.addEventListener(
         }
 
       }
-
 
       setStatus(
         `
