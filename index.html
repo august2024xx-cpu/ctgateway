@@ -5,149 +5,205 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    connect-src 'self' 
-      https://pizza-backend-8if7.onrender.com 
-      https://polygon-bor-rpc.publicnode.com 
+    connect-src 'self'
+      https://pizza-backend-8if7.onrender.com
+      https://polygon-bor-rpc.publicnode.com
       https://*.publicnode.com;
     script-src 'self' 'unsafe-inline' https://esm.sh;
     style-src 'self' 'unsafe-inline';
     img-src 'self' data:;
     font-src 'self';
 ">
-<title>Pizza Coin</title>
+<title>Pizza Coin Pay With Crypto</title>
+
 <style>
   * {
     box-sizing: border-box;
   }
+
   body {
     margin: 0;
-    padding: 20px;
+    padding: 12px;
     background: #000;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
     font-family: Arial, sans-serif;
     color: white;
   }
+
   .container {
-    width: 95%;
-    max-width: 550px;
+    width: 98vw;
+    max-width: 1600px;
     background: #111;
-    padding: 30px;
+    padding: 30px 40px 40px;
     border-radius: 20px;
     border: 1px solid #333;
   }
+
   h1 {
-    font-size: 28px;
+    font-size: clamp(32px, 4vw, 56px);
     text-align: center;
-    margin: 0 0 10px;
-    color: #ff9800;
+    margin: 0 0 18px;
+    color: #39ff14;
   }
+
   .instructions {
     background: #222;
-    padding: 15px;
+    padding: 18px 22px;
     border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 14px;
+    margin-bottom: 24px;
+    font-size: 18px;
     line-height: 1.6;
     color: #ddd;
-    border-left: 4px solid #ff9800;
+    border-left: 6px solid #ff9800;
   }
+
   .instructions ol {
     margin: 0;
     padding-left: 20px;
   }
+
   .instructions li {
     margin-bottom: 8px;
   }
+
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 24px;
   }
+
   label {
     display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #aaa;
+    font-size: clamp(22px, 2.2vw, 34px);
+    margin-bottom: 10px;
+    color: #fff;
     font-weight: bold;
   }
+
   input,
   select {
     width: 100%;
-    padding: 15px;
-    font-size: 16px;
+    min-height: 110px;
+    padding: 20px 28px;
+    font-size: clamp(34px, 4vw, 58px);
+    line-height: 1.15;
     background: #222;
-    border: 1px solid #444;
+    border: 3px solid #39ff14;
     color: white;
-    border-radius: 10px;
+    border-radius: 18px;
     box-sizing: border-box;
   }
+
   input:focus,
   select:focus {
     outline: none;
-    border-color: #ff9800;
+    border-color: #39ff14;
   }
+
   input:invalid:not(:placeholder-shown) {
     border-color: #aa3333;
   }
+
   button {
     width: 100%;
-    padding: 20px;
-    font-size: 20px;
+    min-height: 100px;
+    padding: 24px;
+    font-size: clamp(28px, 3vw, 44px);
     font-weight: bold;
     border: none;
-    border-radius: 10px;
+    border-radius: 16px;
     cursor: pointer;
-    background: #ff9800;
+    background: #39ff14;
     color: white;
-    margin-top: 10px;
+    margin-top: 12px;
   }
+
   button:hover:not(:disabled) {
     opacity: .9;
   }
+
   button:disabled {
     opacity: .55;
     cursor: not-allowed;
   }
+
   #status {
-    margin-top: 20px;
-    font-size: 15px;
+    margin-top: 24px;
+    font-size: clamp(20px, 2.2vw, 32px);
     text-align: center;
     word-break: break-word;
     line-height: 1.5;
-    min-height: 24px;
+    min-height: 36px;
   }
+
   .success {
     color: #00ff00;
     font-weight: bold;
   }
+
   .error {
     color: #ff4444;
     font-weight: bold;
   }
+
   .warning {
     color: #ffcc00;
     font-weight: bold;
   }
+
   .info {
     color: #66ccff;
     font-weight: bold;
   }
+
   .footer-text {
     text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 24px;
+    font-size: 18px;
     color: #bbb;
     font-style: italic;
   }
+
   .small {
-    font-size: 12px;
+    font-size: 16px;
+  }
+
+  /* Extra-large form readability; no JavaScript or form behavior changes. */
+  @media (max-width: 700px) {
+    body {
+      padding: 8px;
+    }
+
+    .container {
+      width: 100%;
+      padding: 22px 18px 30px;
+    }
+
+    .instructions {
+      font-size: 17px;
+    }
+
+    input,
+    select {
+      min-height: 96px;
+      padding: 18px 20px;
+      font-size: 32px;
+    }
+
+    label {
+      font-size: 22px;
+    }
   }
 </style>
 </head>
+
 <body>
+
 <form class="container" id="purchaseForm" novalidate>
-  <h1>🍕 PIZZA COIN 🍕</h1>
+
+  <h1>🍕 PIZZA COIN PAY WITH CRYPTO 🍕</h1>
+
   <div class="instructions">
     <strong>How it works:</strong>
     <ol>
@@ -155,14 +211,17 @@
         <strong>Enter your email:</strong>
         This is where you will receive your electronic pizza gift card.
       </li>
+
       <li>
         <strong>Enter your Polygon receive address:</strong>
         This is where your Pizza Coin symbol PZZC will be delivered.
       </li>
+
       <li>
         <strong>Enter your payment crypto:</strong>
         Select the cryptocurrency you will use on Polygon.
       </li>
+
       <li>
         <strong>Completion & Delivery:</strong>
         After your payment is confirmed on-chain, the server verifies the
@@ -170,11 +229,13 @@
       </li>
     </ol>
   </div>
+
   <!-- EMAIL -->
   <div class="form-group">
     <label for="email">
       1. Enter Email
     </label>
+
     <input
       type="email"
       id="email"
@@ -185,11 +246,13 @@
       required
     >
   </div>
+
   <!-- POLYGON RECEIVE ADDRESS -->
   <div class="form-group">
     <label for="polygonAddress">
       2. Enter Your Polygon Receive Address
     </label>
+
     <input
       type="text"
       id="polygonAddress"
@@ -202,11 +265,13 @@
       required
     >
   </div>
+
   <!-- PAYMENT CRYPTO -->
   <div class="form-group">
     <label for="cryptoSelect">
       3. Select Payment Crypto on Polygon
     </label>
+
     <select
       id="cryptoSelect"
       name="cryptoSelect"
@@ -216,19 +281,23 @@
       <option value="USDC">
         USDC (Polygon)
       </option>
+
       <option value="USDT">
         USDT (Polygon)
       </option>
+
       <option value="MATIC">
         MATIC (Polygon)
       </option>
     </select>
   </div>
+
   <!-- PURCHASE AMOUNT -->
   <div class="form-group">
     <label for="pzzcAmount">
       Purchase Amount (PZZC = 1:1 USDC Value)
     </label>
+
     <input
       type="number"
       id="pzzcAmount"
@@ -241,12 +310,14 @@
       required
     >
   </div>
+
   <button
     type="submit"
     id="payButton"
   >
     Complete Purchase
   </button>
+
   <div
     id="status"
     role="status"
@@ -254,70 +325,131 @@
   >
     Ready to Connect
   </div>
+
   <div class="footer-text">
     Return and purchase as much as you like as often as you like!
     <br><br>
+
     <strong>
       Thank you, Pizza Coin 💵🍕😃
     </strong>
   </div>
+
 </form>
 
+<br>
+
 <script type="module">
-/* =========================================================   ETHERS   ========================================================= */
+
+/* =========================================================
+   ETHERS
+   ========================================================= */
+
 import { ethers } from "https://esm.sh/ethers@6.7.0";
 
-/* =========================================================   CONFIGURATION   ========================================================= */
+
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
+
 const POLYGON_CHAIN_ID = 137n;
 const POLYGON_CHAIN_HEX = "0x89";
-const USDC_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
-const MERCHANT_WALLET = "0x6D83D832d1553FE7a3A210ed2ED2eb1668DD3046";
-const BACKEND_URL = "https://pizza-backend-8if7.onrender.com/api/verify-usdc-order";
 
-/* =========================================================   ERC20 ABI   ========================================================= */
-const ERC20_ABI = [ "function transfer(address to, uint256 value) public returns (bool)"];
+const USDC_ADDRESS =
+  "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
 
-/* =========================================================   DOM   ========================================================= */
-const purchaseForm = document.getElementById("purchaseForm");
-const payButton = document.getElementById("payButton");
-const statusDiv = document.getElementById("status");
+const MERCHANT_WALLET =
+  "0x6D83D832d1553FE7a3A210ed2ED2eb1668DD3046";
 
-/* =========================================================   STATUS HELPER   ========================================================= */
+const BACKEND_URL =
+  "https://pizza-backend-8if7.onrender.com/api/verify-usdc-order";
+
+
+/* =========================================================
+   ERC20 ABI
+   ========================================================= */
+
+const ERC20_ABI = [
+  "function transfer(address to, uint256 value) public returns (bool)"
+];
+
+
+/* =========================================================
+   DOM
+   ========================================================= */
+
+const purchaseForm =
+  document.getElementById("purchaseForm");
+
+const payButton =
+  document.getElementById("payButton");
+
+const statusDiv =
+  document.getElementById("status");
+
+
+/* =========================================================
+   STATUS HELPER
+   ========================================================= */
+
 function setStatus(message, className = "") {
   statusDiv.className = className;
   statusDiv.innerHTML = message;
 }
 
-/* =========================================================   ADDRESS VALIDATION   ========================================================= */
+
+/* =========================================================
+   ADDRESS VALIDATION
+   ========================================================= */
+
 function isValidPolygonAddress(address) {
   return ethers.isAddress(address);
 }
 
-/* =========================================================   EMAIL VALIDATION   ========================================================= */
+
+/* =========================================================
+   EMAIL VALIDATION
+   ========================================================= */
+
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-/* =========================================================   AMOUNT VALIDATION   ========================================================= */
+
+/* =========================================================
+   AMOUNT VALIDATION
+   ========================================================= */
+
 function isValidPurchaseAmount(amount) {
   const numericAmount = Number(amount);
+
   return (
     Number.isFinite(numericAmount) &&
     numericAmount >= 0.001
   );
 }
 
-/* =========================================================   SWITCH TO POLYGON   ========================================================= */
+
+/* =========================================================
+   SWITCH TO POLYGON
+   ========================================================= */
+
 async function ensurePolygon(provider) {
-  const network = await provider.getNetwork();
+
+  const network =
+    await provider.getNetwork();
+
   if (network.chainId === POLYGON_CHAIN_ID) {
     return true;
   }
+
   setStatus(
     "Switching wallet to Polygon...",
     "info"
   );
+
   try {
+
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
       params: [
@@ -326,144 +458,228 @@ async function ensurePolygon(provider) {
         }
       ]
     });
+
   } catch (switchError) {
+
     console.error(
       "Polygon network switch failed:",
       switchError
     );
+
     setStatus(
       "Please switch your wallet to Polygon and try again.",
       "error"
     );
+
     return false;
   }
+
   const updatedNetwork =
     await provider.getNetwork();
+
   if (
     updatedNetwork.chainId !==
     POLYGON_CHAIN_ID
   ) {
+
     setStatus(
       "Wallet is not connected to Polygon.",
       "error"
     );
+
     return false;
   }
+
   return true;
 }
 
-/* =========================================================   SUBMIT   ========================================================= */
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
 purchaseForm.addEventListener(
   "submit",
   async function (event) {
+
     event.preventDefault();
 
-    /* =====================================================       READ FORM       ===================================================== */
+
+    /* =====================================================
+       READ FORM
+       ===================================================== */
+
     const email =
       document.getElementById("email")
         .value
         .trim();
+
     const polyAddr =
       document.getElementById("polygonAddress")
         .value
         .trim();
+
     const cryptoSelect =
       document.getElementById("cryptoSelect")
         .value;
+
     const amount =
       document.getElementById("pzzcAmount")
         .value
         .trim();
 
-    /* =====================================================       VALIDATE EMAIL       ===================================================== */
+
+    /* =====================================================
+       VALIDATE EMAIL
+       ===================================================== */
+
     if (!isValidEmail(email)) {
+
       setStatus(
         "Please enter a valid email address.",
         "error"
       );
-      document.getElementById("email").focus();
+
+      document
+        .getElementById("email")
+        .focus();
+
       return;
     }
 
-    /* =====================================================       VALIDATE POLYGON ADDRESS       ===================================================== */
+
+    /* =====================================================
+       VALIDATE POLYGON ADDRESS
+       ===================================================== */
+
     if (!isValidPolygonAddress(polyAddr)) {
+
       setStatus(
         "Please enter a valid Polygon wallet address.",
         "error"
       );
+
       document
         .getElementById("polygonAddress")
         .focus();
+
       return;
     }
 
-    /* =====================================================       VALIDATE AMOUNT       ===================================================== */
+
+    /* =====================================================
+       VALIDATE AMOUNT
+       ===================================================== */
+
     if (!isValidPurchaseAmount(amount)) {
+
       setStatus(
         "Purchase amount must be at least 0.001.",
         "error"
       );
+
       document
         .getElementById("pzzcAmount")
         .focus();
+
       return;
     }
 
-    /* =====================================================       CURRENT PAYMENT IMPLEMENTATION              IMPORTANT:       The current frontend implementation actually       transfers USDC.e. Therefore don't silently pretend       USDT or MATIC are implemented here.       ===================================================== */
+
+    /* =====================================================
+       CURRENT PAYMENT IMPLEMENTATION
+
+       IMPORTANT:
+       The current frontend implementation actually
+       transfers USDC.e. Therefore don't silently pretend
+       USDT or MATIC are implemented here.
+       ===================================================== */
+
     if (cryptoSelect !== "USDC") {
+
       setStatus(
         "This checkout currently supports USDC (Polygon) only. Please select USDC.",
         "warning"
       );
+
       document
         .getElementById("cryptoSelect")
         .value = "USDC";
+
       return;
     }
 
-    /* =====================================================       WEB3 CHECK       ===================================================== */
+
+    /* =====================================================
+       WEB3 CHECK
+       ===================================================== */
+
     if (
       typeof window.ethereum ===
       "undefined"
     ) {
+
       setStatus(
         "No Web3 wallet detected. Please install or open MetaMask.",
         "error"
       );
+
       return;
     }
 
-    /* =====================================================       PREVENT DOUBLE PAYMENT       ===================================================== */
+
+    /* =====================================================
+       PREVENT DOUBLE PAYMENT
+       ===================================================== */
+
     payButton.disabled = true;
+
     payButton.textContent =
       "Processing...";
 
+
     try {
 
-      /* ===================================================         CONNECT WALLET         =================================================== */
+
+      /* ===================================================
+         CONNECT WALLET
+         =================================================== */
+
       setStatus(
         "Requesting wallet connection...",
         "info"
       );
+
       const provider =
         new ethers.BrowserProvider(
           window.ethereum
         );
+
       await provider.send(
         "eth_requestAccounts",
         []
       );
 
-      /* ===================================================         ENSURE POLYGON         =================================================== */
+
+      /* ===================================================
+         ENSURE POLYGON
+         =================================================== */
+
       const polygonReady =
         await ensurePolygon(provider);
+
       if (!polygonReady) {
         return;
       }
 
-      /* ===================================================         GET SIGNER         =================================================== */
+
+      /* ===================================================
+         GET SIGNER
+         =================================================== */
+
       const signer =
         await provider.getSigner();
+
       const buyerAddress =
         await signer.getAddress();
 
@@ -472,7 +688,11 @@ purchaseForm.addEventListener(
         buyerAddress
       );
 
-      /* ===================================================         CREATE USDC CONTRACT         =================================================== */
+
+      /* ===================================================
+         CREATE USDC CONTRACT
+         =================================================== */
+
       const usdcContract =
         new ethers.Contract(
           USDC_ADDRESS,
@@ -480,14 +700,22 @@ purchaseForm.addEventListener(
           signer
         );
 
-      /* ===================================================         USDC HAS 6 DECIMALS         =================================================== */
+
+      /* ===================================================
+         USDC HAS 6 DECIMALS
+         =================================================== */
+
       const parsedAmount =
         ethers.parseUnits(
           amount,
           6
         );
 
-      /* ===================================================         SHOW PAYMENT DETAILS         =================================================== */
+
+      /* ===================================================
+         SHOW PAYMENT DETAILS
+         =================================================== */
+
       setStatus(
         `
         <span class="info">
@@ -503,14 +731,22 @@ purchaseForm.addEventListener(
         "info"
       );
 
-      /* ===================================================         SEND USDC         =================================================== */
+
+      /* ===================================================
+         SEND USDC
+         =================================================== */
+
       const tx =
         await usdcContract.transfer(
           MERCHANT_WALLET,
           parsedAmount
         );
 
-      /* ===================================================         BROADCASTED         =================================================== */
+
+      /* ===================================================
+         BROADCASTED
+         =================================================== */
+
       setStatus(
         `
         <span class="info">
@@ -526,21 +762,34 @@ purchaseForm.addEventListener(
         "info"
       );
 
-      /* ===================================================         WAIT FOR CONFIRMATION         =================================================== */
+
+      /* ===================================================
+         WAIT FOR CONFIRMATION
+         =================================================== */
+
       const receipt =
         await tx.wait();
 
-      /* ===================================================         CHECK RECEIPT         =================================================== */
+
+      /* ===================================================
+         CHECK RECEIPT
+         =================================================== */
+
       if (
         !receipt ||
         receipt.status !== 1
       ) {
+
         throw new Error(
           "The USDC transaction was not successfully confirmed."
         );
       }
 
-      /* ===================================================         PAYMENT CONFIRMED         =================================================== */
+
+      /* ===================================================
+         PAYMENT CONFIRMED
+         =================================================== */
+
       setStatus(
         `
         <span class="success">
@@ -558,18 +807,29 @@ purchaseForm.addEventListener(
         "success"
       );
 
-      /* ===================================================         SEND PAYMENT TO BACKEND                  The backend should independently verify txHash         before distributing PZZC.         =================================================== */
+
+      /* ===================================================
+         SEND PAYMENT TO BACKEND
+
+         The backend should independently verify txHash
+         before distributing PZZC.
+         =================================================== */
+
       let response;
+
       try {
+
         response =
           await fetch(
             BACKEND_URL,
             {
               method: "POST",
+
               headers: {
                 "Content-Type":
                   "application/json"
               },
+
               body: JSON.stringify({
                 email: email,
                 polygonAddress: polyAddr,
@@ -580,11 +840,14 @@ purchaseForm.addEventListener(
               })
             }
           );
+
       } catch (networkError) {
+
         console.error(
           "Backend network error:",
           networkError
         );
+
         setStatus(
           `
           <span class="success">
@@ -602,31 +865,53 @@ purchaseForm.addEventListener(
           `,
           "error"
         );
+
         return;
       }
 
-      /* ===================================================         READ BACKEND RESPONSE         =================================================== */
+
+      /* ===================================================
+         READ BACKEND RESPONSE
+         =================================================== */
+
       let backendData = {};
+
       try {
+
         backendData =
           await response.json();
+
       } catch (jsonError) {
+
         console.error(
           "Backend JSON error:",
           jsonError
         );
       }
 
-      /* ===================================================         BACKEND FAILED                  IMPORTANT:         Do NOT claim PZZC or email success here.         =================================================== */
-      if (!response.ok || !backendData.success) {
+
+      /* ===================================================
+         BACKEND FAILED
+
+         IMPORTANT:
+         Do NOT claim PZZC or email success here.
+         =================================================== */
+
+      if (
+        !response.ok ||
+        !backendData.success
+      ) {
+
         console.error(
           "Backend order processing failed:",
           backendData
         );
+
         const backendMessage =
           backendData.error ||
           backendData.message ||
           `Server returned HTTP ${response.status}.`;
+
         setStatus(
           `
           <span class="success">
@@ -646,14 +931,22 @@ purchaseForm.addEventListener(
           `,
           "error"
         );
+
         return;
       }
 
-      /* ===================================================         SUCCESS                  Only displayed after backend confirms success.         =================================================== */
+
+      /* ===================================================
+         SUCCESS
+
+         Only displayed after backend confirms success.
+         =================================================== */
+
       const pzzcTxHash =
         backendData.pzzcTxHash ||
         backendData.tokenTxHash ||
         "";
+
       setStatus(
         `
         <span class="success">
@@ -678,33 +971,47 @@ purchaseForm.addEventListener(
         "success"
       );
 
+
     } catch (err) {
+
       console.error(
         "Purchase error:",
         err
       );
 
-      /* ===================================================         USER CANCELLED / TRANSACTION FAILED         =================================================== */
+
+      /* ===================================================
+         USER CANCELLED / TRANSACTION FAILED
+         =================================================== */
+
       let message =
         "Transaction cancelled or failed.";
+
       if (err && err.message) {
+
         if (
           err.code ===
           "ACTION_REJECTED"
         ) {
+
           message =
             "Transaction was rejected in your wallet.";
+
         } else if (
           err.code ===
           "INSUFFICIENT_FUNDS"
         ) {
+
           message =
             "Insufficient wallet funds for this transaction.";
+
         } else {
+
           message =
             err.message;
         }
       }
+
 
       setStatus(
         `
@@ -715,18 +1022,28 @@ purchaseForm.addEventListener(
         "error"
       );
 
+
     } finally {
+
       payButton.disabled = false;
+
       payButton.textContent =
         "Complete Purchase";
     }
-  });
+  }
+);
 
-/* =========================================================   INITIAL STATUS   ========================================================= */
+
+/* =========================================================
+   INITIAL STATUS
+   ========================================================= */
+
 setStatus(
   "Ready to Connect",
   ""
 );
+
 </script>
+
 </body>
 </html>
