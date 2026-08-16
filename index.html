@@ -33,13 +33,16 @@
     color: white;
   }
 
+  /* FORM MADE APPROXIMATELY 5 CM SMALLER ON EACH SIDE */
   .container {
-    width: 98vw;
+    width: calc(98vw - 10cm);
     max-width: 1600px;
     background: #111;
     padding: 30px 40px 40px;
     border-radius: 20px;
     border: 1px solid #333;
+    position: relative;
+    z-index: 2;
   }
 
   h1 {
@@ -169,8 +172,361 @@
     font-size: 16px;
   }
 
-  /* Extra-large form readability; no JavaScript or form behavior changes. */
+
+  /* =========================================================
+     FLOATING BOUNCING EMOJIS
+     ========================================================= */
+
+  .emoji-zone {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 13vw;
+    min-width: 75px;
+    max-width: 190px;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .emoji-zone.left {
+    left: 0;
+  }
+
+  .emoji-zone.right {
+    right: 0;
+  }
+
+  .floating-emoji {
+    position: absolute;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform;
+    filter:
+      drop-shadow(0 0 4px rgba(57, 255, 20, .35));
+  }
+
+
+  /* =========================================================
+     LEFT SIDE EMOJIS
+     ========================================================= */
+
+  .left .emoji-1 {
+    font-size: 70px;
+    left: 8%;
+    top: 10%;
+    animation: bounceLeft1 6.5s ease-in-out infinite alternate;
+  }
+
+  .left .emoji-2 {
+    font-size: 42px;
+    left: 52%;
+    top: 27%;
+    animation: bounceLeft2 4.7s ease-in-out infinite alternate;
+  }
+
+  .left .emoji-3 {
+    font-size: 92px;
+    left: 12%;
+    top: 47%;
+    animation: bounceLeft3 7.2s ease-in-out infinite alternate;
+  }
+
+  .left .emoji-4 {
+    font-size: 54px;
+    left: 55%;
+    top: 67%;
+    animation: bounceLeft4 5.4s ease-in-out infinite alternate;
+  }
+
+  .left .emoji-5 {
+    font-size: 32px;
+    left: 20%;
+    top: 84%;
+    animation: bounceLeft5 3.9s ease-in-out infinite alternate;
+  }
+
+
+  /* =========================================================
+     RIGHT SIDE EMOJIS
+     ========================================================= */
+
+  .right .emoji-1 {
+    font-size: 48px;
+    right: 10%;
+    top: 8%;
+    animation: bounceRight1 5.2s ease-in-out infinite alternate;
+  }
+
+  .right .emoji-2 {
+    font-size: 88px;
+    right: 45%;
+    top: 23%;
+    animation: bounceRight2 7s ease-in-out infinite alternate;
+  }
+
+  .right .emoji-3 {
+    font-size: 38px;
+    right: 12%;
+    top: 43%;
+    animation: bounceRight3 4.2s ease-in-out infinite alternate;
+  }
+
+  .right .emoji-4 {
+    font-size: 68px;
+    right: 48%;
+    top: 61%;
+    animation: bounceRight4 6.1s ease-in-out infinite alternate;
+  }
+
+  .right .emoji-5 {
+    font-size: 30px;
+    right: 18%;
+    top: 82%;
+    animation: bounceRight5 3.7s ease-in-out infinite alternate;
+  }
+
+
+  /* =========================================================
+     BOUNCING MOTION
+     ========================================================= */
+
+  @keyframes bounceLeft1 {
+    0% {
+      transform: translate(0, 0) rotate(-12deg);
+    }
+
+    25% {
+      transform: translate(45px, 75px) rotate(15deg);
+    }
+
+    50% {
+      transform: translate(10px, 145px) rotate(-8deg);
+    }
+
+    75% {
+      transform: translate(65px, 210px) rotate(18deg);
+    }
+
+    100% {
+      transform: translate(15px, 285px) rotate(-15deg);
+    }
+  }
+
+  @keyframes bounceLeft2 {
+    0% {
+      transform: translate(0, 0) rotate(10deg);
+    }
+
+    30% {
+      transform: translate(-35px, 65px) rotate(-18deg);
+    }
+
+    60% {
+      transform: translate(30px, 130px) rotate(12deg);
+    }
+
+    100% {
+      transform: translate(-20px, 205px) rotate(-10deg);
+    }
+  }
+
+  @keyframes bounceLeft3 {
+    0% {
+      transform: translate(0, 0) rotate(8deg);
+    }
+
+    25% {
+      transform: translate(50px, -55px) rotate(-15deg);
+    }
+
+    50% {
+      transform: translate(-15px, -115px) rotate(20deg);
+    }
+
+    75% {
+      transform: translate(60px, -170px) rotate(-12deg);
+    }
+
+    100% {
+      transform: translate(5px, -235px) rotate(15deg);
+    }
+  }
+
+  @keyframes bounceLeft4 {
+    0% {
+      transform: translate(0, 0) rotate(-8deg);
+    }
+
+    35% {
+      transform: translate(-40px, 55px) rotate(16deg);
+    }
+
+    70% {
+      transform: translate(35px, 115px) rotate(-18deg);
+    }
+
+    100% {
+      transform: translate(-10px, 175px) rotate(10deg);
+    }
+  }
+
+  @keyframes bounceLeft5 {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(45px, -55px) rotate(20deg);
+    }
+
+    100% {
+      transform: translate(-20px, -110px) rotate(-15deg);
+    }
+  }
+
+
+  @keyframes bounceRight1 {
+    0% {
+      transform: translate(0, 0) rotate(12deg);
+    }
+
+    25% {
+      transform: translate(-45px, 70px) rotate(-18deg);
+    }
+
+    50% {
+      transform: translate(10px, 140px) rotate(10deg);
+    }
+
+    75% {
+      transform: translate(-60px, 205px) rotate(-15deg);
+    }
+
+    100% {
+      transform: translate(-15px, 275px) rotate(12deg);
+    }
+  }
+
+  @keyframes bounceRight2 {
+    0% {
+      transform: translate(0, 0) rotate(-10deg);
+    }
+
+    30% {
+      transform: translate(35px, 65px) rotate(18deg);
+    }
+
+    60% {
+      transform: translate(-30px, 135px) rotate(-12deg);
+    }
+
+    100% {
+      transform: translate(20px, 210px) rotate(15deg);
+    }
+  }
+
+  @keyframes bounceRight3 {
+    0% {
+      transform: translate(0, 0) rotate(8deg);
+    }
+
+    25% {
+      transform: translate(-40px, -55px) rotate(-18deg);
+    }
+
+    50% {
+      transform: translate(20px, -115px) rotate(12deg);
+    }
+
+    75% {
+      transform: translate(-50px, -170px) rotate(-15deg);
+    }
+
+    100% {
+      transform: translate(10px, -225px) rotate(18deg);
+    }
+  }
+
+  @keyframes bounceRight4 {
+    0% {
+      transform: translate(0, 0) rotate(-12deg);
+    }
+
+    35% {
+      transform: translate(45px, 60px) rotate(18deg);
+    }
+
+    70% {
+      transform: translate(-30px, 120px) rotate(-15deg);
+    }
+
+    100% {
+      transform: translate(15px, 180px) rotate(10deg);
+    }
+  }
+
+  @keyframes bounceRight5 {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(-45px, -60px) rotate(-20deg);
+    }
+
+    100% {
+      transform: translate(20px, -115px) rotate(15deg);
+    }
+  }
+
+
+  /* =========================================================
+     SMALL SCREENS
+     ========================================================= */
+
+  @media (max-width: 900px) {
+
+    .emoji-zone {
+      width: 8vw;
+      min-width: 45px;
+      opacity: .55;
+    }
+
+    .floating-emoji {
+      transform-origin: center;
+    }
+
+    .left .emoji-1,
+    .right .emoji-1 {
+      font-size: 38px;
+    }
+
+    .left .emoji-2,
+    .right .emoji-2 {
+      font-size: 28px;
+    }
+
+    .left .emoji-3,
+    .right .emoji-3 {
+      font-size: 48px;
+    }
+
+    .left .emoji-4,
+    .right .emoji-4 {
+      font-size: 34px;
+    }
+
+    .left .emoji-5,
+    .right .emoji-5 {
+      font-size: 24px;
+    }
+  }
+
+
   @media (max-width: 700px) {
+
     body {
       padding: 8px;
     }
@@ -194,11 +550,45 @@
     label {
       font-size: 22px;
     }
+
+    .emoji-zone {
+      display: none;
+    }
   }
 </style>
 </head>
 
 <body>
+
+<!-- =========================================================
+     LEFT FLOATING EMOJIS
+     ========================================================= -->
+
+<div class="emoji-zone left" aria-hidden="true">
+
+  <span class="floating-emoji emoji-1">🍕</span>
+  <span class="floating-emoji emoji-2">😃</span>
+  <span class="floating-emoji emoji-3">💵</span>
+  <span class="floating-emoji emoji-4">🪙</span>
+  <span class="floating-emoji emoji-5">🙂</span>
+
+</div>
+
+
+<!-- =========================================================
+     RIGHT FLOATING EMOJIS
+     ========================================================= -->
+
+<div class="emoji-zone right" aria-hidden="true">
+
+  <span class="floating-emoji emoji-1">🙂</span>
+  <span class="floating-emoji emoji-2">🍕</span>
+  <span class="floating-emoji emoji-3">🪙</span>
+  <span class="floating-emoji emoji-4">😃</span>
+  <span class="floating-emoji emoji-5">💵</span>
+
+</div>
+
 
 <form class="container" id="purchaseForm" novalidate>
 
@@ -206,7 +596,9 @@
 
   <div class="instructions">
     <strong>How it works:</strong>
+
     <ol>
+
       <li>
         <strong>Enter your email:</strong>
         This is where you will receive your electronic pizza gift card.
@@ -227,11 +619,15 @@
         After your payment is confirmed on-chain, the server verifies the
         payment before PZZC distribution and email delivery.
       </li>
+
     </ol>
   </div>
 
+
   <!-- EMAIL -->
+
   <div class="form-group">
+
     <label for="email">
       1. Enter Email
     </label>
@@ -245,10 +641,14 @@
       inputmode="email"
       required
     >
+
   </div>
 
+
   <!-- POLYGON RECEIVE ADDRESS -->
+
   <div class="form-group">
+
     <label for="polygonAddress">
       2. Enter Your Polygon Receive Address
     </label>
@@ -264,10 +664,14 @@
       inputmode="text"
       required
     >
+
   </div>
 
+
   <!-- PAYMENT CRYPTO -->
+
   <div class="form-group">
+
     <label for="cryptoSelect">
       3. Select Payment Crypto on Polygon
     </label>
@@ -278,6 +682,7 @@
       autocomplete="off"
       required
     >
+
       <option value="USDC">
         USDC (Polygon)
       </option>
@@ -289,11 +694,16 @@
       <option value="MATIC">
         MATIC (Polygon)
       </option>
+
     </select>
+
   </div>
 
+
   <!-- PURCHASE AMOUNT -->
+
   <div class="form-group">
+
     <label for="pzzcAmount">
       Purchase Amount (PZZC = 1:1 USDC Value)
     </label>
@@ -309,7 +719,9 @@
       inputmode="decimal"
       required
     >
+
   </div>
+
 
   <button
     type="submit"
@@ -317,6 +729,7 @@
   >
     Complete Purchase
   </button>
+
 
   <div
     id="status"
@@ -326,18 +739,23 @@
     Ready to Connect
   </div>
 
+
   <div class="footer-text">
+
     Return and purchase as much as you like as often as you like!
+
     <br><br>
 
     <strong>
       Thank you, Pizza Coin 💵🍕😃
     </strong>
+
   </div>
 
 </form>
 
 <br>
+
 
 <script type="module">
 
@@ -353,6 +771,7 @@ import { ethers } from "https://esm.sh/ethers@6.7.0";
    ========================================================= */
 
 const POLYGON_CHAIN_ID = 137n;
+
 const POLYGON_CHAIN_HEX = "0x89";
 
 const USDC_ADDRESS =
@@ -393,8 +812,11 @@ const statusDiv =
    ========================================================= */
 
 function setStatus(message, className = "") {
+
   statusDiv.className = className;
+
   statusDiv.innerHTML = message;
+
 }
 
 
@@ -403,7 +825,9 @@ function setStatus(message, className = "") {
    ========================================================= */
 
 function isValidPolygonAddress(address) {
+
   return ethers.isAddress(address);
+
 }
 
 
@@ -412,7 +836,9 @@ function isValidPolygonAddress(address) {
    ========================================================= */
 
 function isValidEmail(email) {
+
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 }
 
 
@@ -421,12 +847,14 @@ function isValidEmail(email) {
    ========================================================= */
 
 function isValidPurchaseAmount(amount) {
+
   const numericAmount = Number(amount);
 
   return (
     Number.isFinite(numericAmount) &&
     numericAmount >= 0.001
   );
+
 }
 
 
@@ -439,8 +867,13 @@ async function ensurePolygon(provider) {
   const network =
     await provider.getNetwork();
 
-  if (network.chainId === POLYGON_CHAIN_ID) {
+  if (
+    network.chainId ===
+    POLYGON_CHAIN_ID
+  ) {
+
     return true;
+
   }
 
   setStatus(
@@ -451,12 +884,17 @@ async function ensurePolygon(provider) {
   try {
 
     await window.ethereum.request({
-      method: "wallet_switchEthereumChain",
+
+      method:
+        "wallet_switchEthereumChain",
+
       params: [
         {
-          chainId: POLYGON_CHAIN_HEX
+          chainId:
+            POLYGON_CHAIN_HEX
         }
       ]
+
     });
 
   } catch (switchError) {
@@ -472,6 +910,7 @@ async function ensurePolygon(provider) {
     );
 
     return false;
+
   }
 
   const updatedNetwork =
@@ -488,9 +927,11 @@ async function ensurePolygon(provider) {
     );
 
     return false;
+
   }
 
   return true;
+
 }
 
 
@@ -510,21 +951,25 @@ purchaseForm.addEventListener(
        ===================================================== */
 
     const email =
-      document.getElementById("email")
+      document
+        .getElementById("email")
         .value
         .trim();
 
     const polyAddr =
-      document.getElementById("polygonAddress")
+      document
+        .getElementById("polygonAddress")
         .value
         .trim();
 
     const cryptoSelect =
-      document.getElementById("cryptoSelect")
+      document
+        .getElementById("cryptoSelect")
         .value;
 
     const amount =
-      document.getElementById("pzzcAmount")
+      document
+        .getElementById("pzzcAmount")
         .value
         .trim();
 
@@ -545,6 +990,7 @@ purchaseForm.addEventListener(
         .focus();
 
       return;
+
     }
 
 
@@ -564,6 +1010,7 @@ purchaseForm.addEventListener(
         .focus();
 
       return;
+
     }
 
 
@@ -583,16 +1030,12 @@ purchaseForm.addEventListener(
         .focus();
 
       return;
+
     }
 
 
     /* =====================================================
        CURRENT PAYMENT IMPLEMENTATION
-
-       IMPORTANT:
-       The current frontend implementation actually
-       transfers USDC.e. Therefore don't silently pretend
-       USDT or MATIC are implemented here.
        ===================================================== */
 
     if (cryptoSelect !== "USDC") {
@@ -604,9 +1047,11 @@ purchaseForm.addEventListener(
 
       document
         .getElementById("cryptoSelect")
-        .value = "USDC";
+        .value =
+        "USDC";
 
       return;
+
     }
 
 
@@ -625,6 +1070,7 @@ purchaseForm.addEventListener(
       );
 
       return;
+
     }
 
 
@@ -669,7 +1115,9 @@ purchaseForm.addEventListener(
         await ensurePolygon(provider);
 
       if (!polygonReady) {
+
         return;
+
       }
 
 
@@ -783,6 +1231,7 @@ purchaseForm.addEventListener(
         throw new Error(
           "The USDC transaction was not successfully confirmed."
         );
+
       }
 
 
@@ -810,9 +1259,6 @@ purchaseForm.addEventListener(
 
       /* ===================================================
          SEND PAYMENT TO BACKEND
-
-         The backend should independently verify txHash
-         before distributing PZZC.
          =================================================== */
 
       let response;
@@ -823,21 +1269,35 @@ purchaseForm.addEventListener(
           await fetch(
             BACKEND_URL,
             {
-              method: "POST",
+
+              method:
+                "POST",
 
               headers: {
                 "Content-Type":
                   "application/json"
               },
 
-              body: JSON.stringify({
-                email: email,
-                polygonAddress: polyAddr,
-                pzzcAmount: amount,
-                paymentCrypto:
-                  cryptoSelect,
-                txHash: tx.hash
-              })
+              body:
+                JSON.stringify({
+
+                  email:
+                    email,
+
+                  polygonAddress:
+                    polyAddr,
+
+                  pzzcAmount:
+                    amount,
+
+                  paymentCrypto:
+                    cryptoSelect,
+
+                  txHash:
+                    tx.hash
+
+                })
+
             }
           );
 
@@ -867,6 +1327,7 @@ purchaseForm.addEventListener(
         );
 
         return;
+
       }
 
 
@@ -887,14 +1348,12 @@ purchaseForm.addEventListener(
           "Backend JSON error:",
           jsonError
         );
+
       }
 
 
       /* ===================================================
          BACKEND FAILED
-
-         IMPORTANT:
-         Do NOT claim PZZC or email success here.
          =================================================== */
 
       if (
@@ -933,13 +1392,12 @@ purchaseForm.addEventListener(
         );
 
         return;
+
       }
 
 
       /* ===================================================
          SUCCESS
-
-         Only displayed after backend confirms success.
          =================================================== */
 
       const pzzcTxHash =
@@ -987,7 +1445,10 @@ purchaseForm.addEventListener(
       let message =
         "Transaction cancelled or failed.";
 
-      if (err && err.message) {
+      if (
+        err &&
+        err.message
+      ) {
 
         if (
           err.code ===
@@ -1009,7 +1470,9 @@ purchaseForm.addEventListener(
 
           message =
             err.message;
+
         }
+
       }
 
 
@@ -1025,11 +1488,14 @@ purchaseForm.addEventListener(
 
     } finally {
 
-      payButton.disabled = false;
+      payButton.disabled =
+        false;
 
       payButton.textContent =
         "Complete Purchase";
+
     }
+
   }
 );
 
